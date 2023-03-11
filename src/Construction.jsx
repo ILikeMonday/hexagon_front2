@@ -17,6 +17,11 @@ const Construction = () => {
       <div>
         <textarea type="text"></textarea>
       </div>
+      <button
+        style={{ margin: "0 auto", fontSize: "25px", padding: "10px 20px" }}
+      >
+        Next ➠
+      </button>
     </div>
   );
 };

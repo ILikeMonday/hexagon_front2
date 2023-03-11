@@ -18,8 +18,8 @@ export default function App() {
           minHeight: "100vh",
         }}
       >
-        <Construction />
-        {/* <Select /> */}
+        {/* <Construction /> */}
+        <Select />
         {/* <Menu /> */}
         {/* <Constructor /> */}
       </div>

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Grid from "./component/Grid.jsx";
+import Grid from "./Grid.jsx";
 import { useState, useRef, useEffect } from "react";
 
 function Motion() {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Grid from "./component/Grid.jsx";
+import Grid from "./Grid.jsx";
 
 const Menu = () => {
   return (

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   return (
@@ -11,12 +12,14 @@ export default function HomePage() {
       >
         <h1 className="Topic">Upbeat</h1>
         {/* <Link to="/"></Link> */}
-        <button
-          className="d-grid gap-2 col-6 mx-auto btn btn-primary"
-          style={{ marginTop: "10vh", fontSize: "10vh" }}
-        >
-          Play
-        </button>
+        <Link to="/Player">
+          <button
+            className="d-grid gap-2 col-6 mx-auto btn btn-primary"
+            style={{ marginTop: "10vh", fontSize: "10vh" }}
+          >
+            Play
+          </button>
+        </Link>
       </div>
     </div>
   );

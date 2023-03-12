@@ -13,8 +13,8 @@ export default function HomePage() {
             height: "50vh",
           }}
         >
-          <div class="d-grid gap-5 col-6 mx-auto">
-            <Link to="/Player" style={{ textDecoration: "none" }}>
+          <div class="d-grid gap-5 mx-auto">
+            <Link to="/Player">
               <button
                 class="btn btn-primary"
                 type="button"
@@ -23,7 +23,7 @@ export default function HomePage() {
                 Start Game
               </button>
             </Link>
-            <Link to="/Player" style={{ textDecoration: "none" }}>
+            <Link to="/How-To-Play">
               <button
                 class="btn btn-primary"
                 type="button"

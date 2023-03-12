@@ -18,16 +18,18 @@ function Player() {
   }
 
   const options = [
-    { value: "option1", label: "Option 1" },
-    { value: "option2", label: "Option 2" },
-    { value: "option3", label: "Option 3" },
+    { value: "2 players", label: "2 players" },
+    { value: "3 players", label: "3 players" },
+    { value: "4 players", label: "4 players" },
   ];
 
   return (
     <div>
       <button onClick={handleClick}>Select an option</button>
       {showOptions && (
-        <div>
+        <div
+          style={{ margin: "0 auto", fontSize: "40px", padding: "10px 20px" }}
+        >
           <p>Choose one:</p>
           {options.map((option) => (
             <label key={option.value}>
@@ -41,6 +43,7 @@ function Player() {
               {option.label}
             </label>
           ))}
+          <br />
           <button onClick={handleSubmit}>Submit</button>
         </div>
       )}

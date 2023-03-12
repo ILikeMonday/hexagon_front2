@@ -7,14 +7,21 @@
 }
 
 body {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
-    url("3d-wall-fractal-4k-wf.jpg");
+  background-color: #1f1b24;
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+    url("3d-wall-fractal-4k-wf.jpg"); */
   background-size: 100%;
   background-repeat: no-repeat;
   height: 100%;
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
+}
+
+.Topic {
+  color: #d5e3f0;
+  margin-top: 5vh;
+  font-size: 20vh;
 }
 .play_board,
 .select_box,

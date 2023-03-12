@@ -7,6 +7,7 @@ import Menu from "./Menu";
 import { useState } from "react";
 import Motion from "./Motion";
 import Select from "./Select";
+import Player from "./Player";
 
 export default function App() {
   return (
@@ -18,8 +19,9 @@ export default function App() {
           minHeight: "100vh",
         }}
       >
+        <Player />
         {/* <Construction /> */}
-        <Select />
+        {/* <Select /> */}
         {/* <Menu /> */}
         {/* <Constructor /> */}
       </div>

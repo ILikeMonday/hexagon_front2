@@ -10,13 +10,10 @@ export default function Playableoverlay(props) {
     <div>
       {/* <HexGridDemo /> */}
       {/* <Hexagon x={20} y={5} key={`${10}${33}`} IsOwned={false} /> */}
-<<<<<<< HEAD
       <HexagonGrid2 />
       {/* <HexGridDemo /> */}
-=======
       {/* <HexagonGrid2 /> */}
       <HexGridDemo />
->>>>>>> 83e248ebd9093a99014399cbfc7e0921ad24c29f
       <Construction />
       {/* {props.children} */}
     </div>

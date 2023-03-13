@@ -12,7 +12,7 @@ export default function Playableoverlay(props) {
       {/* <Hexagon x={20} y={5} key={`${10}${33}`} IsOwned={false} /> */}
       {/* <HexagonGrid2 /> */}
       <HexGridDemo />
-      {/* <Construction /> */}
+      <Construction />
       {/* {props.children} */}
     </div>
   );

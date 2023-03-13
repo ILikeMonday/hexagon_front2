@@ -15,7 +15,7 @@ const Construction = () => {
       </h1>
       <h1></h1>
       <div>
-        <textarea type="text"></textarea>
+        <textarea type="text" rows="10" cols="100"></textarea>
       </div>
       <button
         style={{ margin: "0 auto", fontSize: "25px", padding: "10px 20px" }}

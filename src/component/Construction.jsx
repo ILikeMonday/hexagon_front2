@@ -1,6 +1,15 @@
-import React from "react";
+import CodeEditor from "@uiw/react-textarea-code-editor";
+import React, { useState } from "react";
+import Editor from "@monaco-editor/react";
 
-const Construction = () => {
+const Construction = ({ onChange, language, code, theme }) => {
+  const [value, setValue] = useState(code || "");
+
+  const handleEditorChange = (value) => {
+    setValue(value);
+    onChange("code", value);
+  };
+
   return (
     <div>
       <h1
@@ -13,9 +22,17 @@ const Construction = () => {
       >
         Build your Constrution plan
       </h1>
-      <h1></h1>
-      <div>
-        <textarea type="text" rows="10" cols="100"></textarea>
+
+      <div className="overlay rounded-md overflow-hidden w-full h-full shadow-4xl">
+        <Editor
+          height="85vh"
+          width={`100%`}
+          language={language || "javascript"}
+          value={value}
+          theme={theme}
+          defaultValue="// some comment"
+          onChange={handleEditorChange}
+        />
       </div>
       <button
         style={{ margin: "0 auto", fontSize: "25px", padding: "10px 20px" }}

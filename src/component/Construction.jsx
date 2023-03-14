@@ -1,5 +1,5 @@
 import CodeEditor from "@uiw/react-textarea-code-editor";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Editor from "@monaco-editor/react";
 
 const Construction = ({ onChange, language, code, theme }) => {
@@ -29,7 +29,7 @@ const Construction = ({ onChange, language, code, theme }) => {
           width={`100%`}
           language={language || "javascript"}
           value={value}
-          theme={theme}
+          theme="vs-dark"
           defaultValue="// some comment"
           onChange={handleEditorChange}
         />

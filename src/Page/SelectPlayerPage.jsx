@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-export default function Player() {
+export default function SelectPlayerPage() {
   const [showOptions, setShowOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const Navigate = useNavigate();
@@ -18,7 +18,7 @@ export default function Player() {
   const [Players, setPlayers] = useState("");
   return (
     <div>
-      <p className="Topic">Amount of player</p>
+      <p className="Topic">Number of players</p>
       {/* <button onClick={handleClick}>Select an option</button> */}
       <div style={{ textAlign: "center" }}>
         <input

@@ -8,8 +8,8 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 // import { b } from "./HexagonGrid.js";
 // import { hexSize } from "./HexagonGrid.js";
 
-const colConfig = 4;
-const rowConfig = 5;
+const colConfig = 5;
+const rowConfig = 10;
 
 const gridWidth = 190 * rowConfig;
 const gridHeight = 190 * rowConfig;

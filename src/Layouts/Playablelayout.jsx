@@ -1,9 +1,9 @@
 import React from "react";
-import Construction from "../Component/Construction";
-import HexGridDemo from "../Component/Grid";
-import HexagonGen from "../Component/Hexagongen";
-import HexagonGrid from "../Component/HexagonGrid";
-import HexagonGrid2 from "../Component/HexagonGrid2";
+import Construction from "../component/Construction";
+import HexGridDemo from "../component/Grid";
+import HexagonGen from "../component/Hexagongen";
+import HexagonGrid from "../component/HexagonGrid";
+import HexagonGrid2 from "../component/HexagonGrid2";
 
 export default function Playableoverlay(props) {
   return (

@@ -5,7 +5,7 @@ import HomePage from "./Page/HomePage";
 import SelectPlayerPage from "./Page/SelectPlayerPage";
 import HowToPlayPage from "./Page/HowToPlayPage";
 import PlayGround from "./Page/PlayGround";
-import Players from "./Component/Players";
+import Players from "./component/Players";
 
 export default function App() {
   return (

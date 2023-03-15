@@ -7,9 +7,11 @@ const Construction = ({ onChange, language, code, theme }) => {
 
   const handleEditorChange = (value) => {
     setValue(value);
-    onChange("code", value);
+    // onChange("code", value);
   };
-
+  const checkingtype = () => {
+    console.log(value);
+  };
   return (
     <div>
       <h1
@@ -26,15 +28,16 @@ const Construction = ({ onChange, language, code, theme }) => {
       <div className="overlay rounded-md overflow-hidden w-full h-full shadow-4xl">
         <Editor
           height="85vh"
-          width={`100%`}
+          width={`80%`}
           language={language || "javascript"}
           value={value}
           theme="vs-dark"
           defaultValue="// some comment"
-          onChange={handleEditorChange}
+          onChange={(e) => handleEditorChange(e)}
         />
       </div>
       <button
+        onClick={checkingtype}
         style={{ margin: "0 auto", fontSize: "25px", padding: "10px 20px" }}
       >
         Next ➠

@@ -1,4 +1,5 @@
 import "./App.css";
+import "./component/Hexagon.css";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./Page/HomePage";

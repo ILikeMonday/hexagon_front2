@@ -1,41 +1,79 @@
-import React from "react";
+import React, { useState } from "react";
 // import Hexagon from "./Hexagon";
-import { HexGrid, Layout, Hexagon, GridGenerator } from "react-hexgrid";
+import { HexGrid, Layout, Hexagon, Pattern } from "react-hexgrid";
 import Hexagongen from "./Hexagongen";
 
 export default function HexagonGrid2() {
+  // const [hexagons, setHexagons] = useState([[]]);
+  const [scaleconfig, setScaleconfig] = useState(100);
   const hexagonSize = { x: 8, y: 8 };
-  const m = 10;
-  const n = 5;
+  const row = 10;
+  const col = 30;
   const hexagons = [];
-  // for (let y = 0; y <= m; y++) {
-  //   for (let x = 0; x <= n; x++) {
-  //     hexagons.push(
-  //       <Hexagongen key={`hex-${x}`} x={x} y={-x} IsOwned={false} />
-  //     );
-  //   }
-  // }
+  for (let y = 0; y < row; y++) {
+    let j = y;
+    let k = 1;
+    for (let x = 0; x < col; x++) {
+      k++;
+      hexagons.push(
+        <Hexagongen
+          key={`hex-${x},${y}`}
+          x={x + 1}
+          y={y + 1}
+          columadjust={j}
+          IsOwned={false}
+          img={"notown"}
+        />
+      );
+      if (k % 2 === 0) j--;
+    }
+  }
+  const zoomin = () => {
+    if (scaleconfig >= 500) return;
+    setScaleconfig(scaleconfig + 10);
+    console.log(scaleconfig);
+  };
+  const zoomout = () => {
+    if (scaleconfig <= 10) return;
+    setScaleconfig(scaleconfig - 10);
+    console.log(scaleconfig);
+  };
+  const own = () => {
+    console.log(1);
+    hexagons[0] = <></>;
+    console.log(hexagons[0]);
+    // hexagons.splice(
+    //   0,
+    //   1,
+    //   <Hexagongen
+    //     key={`hex-${0},${0}`}
+    //     x={0}
+    //     y={0}
+    //     IsOwned={false}
+    //     img={"own"}
+    //   />
+    // );
+    console.log(2);
+  };
   return (
-    <div className="App" style={{ color: "white" }}>
-      <h1>Basic example of HexGrid usage.</h1>
-      <HexGrid width={1200} height={800}>
-        <Layout size={hexagonSize} spacing={1.05} flat={true}>
-          {/* {hexagons} */}
-          <Hexagon q={0} r={0} s={0} />
-          <Hexagon q={1} r={-1} s={0} />
-          <Hexagon q={2} r={-1} s={0} />
-          <Hexagon q={3} r={-2} s={0} />
-          <Hexagon q={4} r={-2} s={0} />
-          <Hexagon q={5} r={-3} s={0} />
-          {/* ??? */}
-          <Hexagon q={0} r={1} s={0} />
-          <Hexagon q={1} r={0} s={0} />
-          <Hexagon q={2} r={0} s={0} />
-          <Hexagon q={3} r={-1} s={0} />
-          <Hexagon q={4} r={-1} s={0} />
-          <Hexagon q={5} r={-2} s={0} />
-        </Layout>
-      </HexGrid>
+    <div>
+      <div className="HexGrid">
+        {/* <span style={{ color: "white" }}>hi</span> */}
+        <HexGrid
+          style={{ transform: `scale(${scaleconfig / 100})` }}
+          width={1200}
+          height={1080}
+          viewBox={`${-8} ${col === 1 ? -7 : -14} ${14.5 * col} ${
+            row <= 5 ? 20 * row : 16 * row
+          }`}
+        >
+          <Layout size={hexagonSize} spacing={1.05} flat={true}>
+            {hexagons}
+          </Layout>
+        </HexGrid>
+      </div>
+      <button onClick={zoomin}>Zoom in</button>
+      <button onClick={zoomout}>Zoom out</button>
     </div>
   );
 }

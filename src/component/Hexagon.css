@@ -1,0 +1,28 @@
+.notown {
+  fill: #98ff00;
+  /* color: #98ff00; */
+}
+.own {
+  fill: #0400ff;
+}
+.hextext {
+  color: #0400ff;
+  font-size: 0.3em;
+}
+
+svg g text {
+  font-size: 0.22em;
+  fill: #000000;
+}
+.HexGrid {
+  /* overflow: scroll; */
+  position: static;
+  overflow: auto;
+  margin: auto;
+  width: 50%;
+  /* border: 3px solid green; */
+  /* padding: 10px; */
+  /* background-color: wheat; */
+  width: 100vh;
+  height: 90vh;
+}

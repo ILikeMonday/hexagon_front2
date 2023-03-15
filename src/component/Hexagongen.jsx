@@ -1,10 +1,19 @@
 import React, { useState } from "react";
-import { HexGrid, Layout, Hexagon, GridGenerator } from "react-hexgrid";
+import { Text, Hexagon } from "react-hexgrid";
 
 const HexagonGen = (props) => {
-  const { x, y, IsOwned } = props;
+  const { x, y, columadjust, IsOwned, img } = props;
+  const col = x;
+  const row = y;
   return (
-    <Hexagon q={x} r={y} s={0} />
+    <g>
+      <Hexagon className={img} q={x - 1} r={columadjust} s={0}>
+        <Text className="hextext">
+          {row},{col}
+        </Text>
+      </Hexagon>
+    </g>
+
     // <span style={{ textAlign: "center", position: "relative" }}>
     //   <span>
     //     <span

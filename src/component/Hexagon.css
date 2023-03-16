@@ -26,3 +26,20 @@ svg g text {
   width: 100vh;
   height: 90vh;
 }
+
+.HexGrid::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.HexGrid::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.HexGrid::-webkit-scrollbar-thumb {
+  background: #7326d1;
+}
+
+.HexGrid::-webkit-scrollbar-thumb:hover {
+  background: #9e3131;
+}

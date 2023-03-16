@@ -59,11 +59,15 @@ export default function HexagonGrid2() {
     <div>
       <div className="HexGrid">
         {/* <span style={{ color: "white" }}>hi</span> */}
+
         <HexGrid
-          style={{ transform: `scale(${scaleconfig / 100})` }}
+          style={{
+            transform: `scale(${scaleconfig / 100})`,
+            transformOrigin: "0 0",
+          }}
           width={1200}
           height={1080}
-          viewBox={`${-8} ${col === 1 ? -7 : -14} ${14.5 * col} ${
+          viewBox={`${-8 - col} ${col === 1 ? -7 : -14} ${14.5 * col} ${
             row <= 5 ? 20 * row : 16 * row
           }`}
         >

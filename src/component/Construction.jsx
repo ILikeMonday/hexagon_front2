@@ -13,19 +13,30 @@ const Construction = ({ onChange, language, code, theme }) => {
     console.log(value);
   };
   return (
-    <div>
+    <div style={{ position: "sticky", top: "20px" }}>
       <h1
         style={{
           margin: "0 auto",
           fontSize: "50px",
           padding: "10px 20px",
           color: "#3E9DDE",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         Build your Constrution plan
       </h1>
 
-      <div className="overlay rounded-md overflow-hidden w-full h-full shadow-4xl">
+      <div
+        className=" d-flex"
+        style={{
+          margin: "0 auto",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <Editor
           height="85vh"
           width={`80%`}

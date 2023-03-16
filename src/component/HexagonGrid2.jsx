@@ -8,7 +8,7 @@ export default function HexagonGrid2() {
   const [scaleconfig, setScaleconfig] = useState(100);
   const hexagonSize = { x: 8, y: 8 };
   const row = 10;
-  const col = 30;
+  const col = 20;
   const hexagons = [];
   for (let y = 0; y < row; y++) {
     let j = y;
@@ -57,6 +57,20 @@ export default function HexagonGrid2() {
   };
   return (
     <div>
+      <h1
+        style={{
+          margin: "0 auto",
+          fontSize: "50px",
+          padding: "10px 20px",
+          color: "#3E9DDE",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        Space field
+      </h1>
+      <br />
       <div className="HexGrid">
         {/* <span style={{ color: "white" }}>hi</span> */}
 
@@ -76,8 +90,12 @@ export default function HexagonGrid2() {
           </Layout>
         </HexGrid>
       </div>
-      <button onClick={zoomin}>Zoom in</button>
-      <button onClick={zoomout}>Zoom out</button>
+      <button onClick={zoomin} class="btn btn-primary">
+        Zoom in
+      </button>
+      <button onClick={zoomout} class="btn btn-primary">
+        Zoom out
+      </button>
     </div>
   );
 }

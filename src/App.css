@@ -7,9 +7,9 @@
 }
 
 body {
-  background-color: #1f1b24;
-  /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
-    url("3d-wall-fractal-4k-wf.jpg"); */
+  /* background-color: #1f1b24; */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+    url("spacepixel.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
   height: 100%;

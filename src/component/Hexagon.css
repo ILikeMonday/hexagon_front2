@@ -1,5 +1,5 @@
 .notown {
-  fill: #98ff00;
+  fill: #924949;
   /* color: #98ff00; */
 }
 .own {
@@ -22,7 +22,10 @@ svg g text {
   width: 50%;
   /* border: 3px solid green; */
   /* padding: 10px; */
-  /* background-color: wheat; */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("rayda1.jpg");
+  background-position: center center;
+  background-size: cover;
   width: 100vh;
   height: 90vh;
 }
@@ -37,7 +40,7 @@ svg g text {
 }
 
 .HexGrid::-webkit-scrollbar-thumb {
-  background: #7326d1;
+  background: #0816dd;
 }
 
 .HexGrid::-webkit-scrollbar-thumb:hover {

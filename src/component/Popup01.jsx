@@ -1,0 +1,42 @@
+import React from "react";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
+import Construction from "./Construction";
+
+export default function PopupGfg() {
+  return (
+    <div>
+      <Popup
+        trigger={
+          <button
+            style={{
+              margin: "0 auto",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              fontSize: "50Px",
+            }}
+            class="btn btn-primary"
+          >
+            {" "}
+            Click to build your Construction{" "}
+          </button>
+        }
+        modal
+        nested
+        height="85vh"
+        width={`80%`}
+      >
+        {(close) => (
+          <div className="model">
+            <div className="content">
+              <Construction />
+            </div>
+
+            <button onClick={() => close()}>Close modal</button>
+          </div>
+        )}
+      </Popup>
+    </div>
+  );
+}

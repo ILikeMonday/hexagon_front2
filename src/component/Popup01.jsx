@@ -7,6 +7,7 @@ export default function PopupGfg() {
   return (
     <div>
       <Popup
+        style={{ width: "10%", height: "10%" }}
         trigger={
           <button
             style={{
@@ -24,8 +25,8 @@ export default function PopupGfg() {
         }
         modal
         nested
-        height="85vh"
-        width={`80%`}
+        height={`0%`}
+        width={`0%`}
       >
         {(close) => (
           <div className="model">

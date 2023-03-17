@@ -1,74 +1,128 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
 export default function SelectPlayerPage() {
   const [showOptions, setShowOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const Navigate = useNavigate();
   const row = 15;
   const col = 20;
+
   const PlayerAdder = () => {
-    if (Players < 2) alert("Player Should have more than 1");
-    else if (Players > row * col) alert("Player Should have less than field");
-    else {
+    if (selectedOption === null) {
+      alert("Please select an option");
+    } else if (selectedOption === "custom") {
+      if (Players < 2) alert("Player Should have more than 1");
+      else if (Players > row * col) alert("Player Should have less than field");
+      else {
+        Navigate("/Playground");
+      }
+    } else {
       Navigate("/Playground");
     }
     setPlayers("");
   };
 
   const [Players, setPlayers] = useState("");
+
   return (
     <div>
       <p className="Topic">Number of players</p>
-      {/* <button onClick={handleClick}>Select an option</button> */}
+
       <div style={{ textAlign: "center" }}>
-        <input
-          type="number"
-          inputMode="numeric"
-          pattern="[0-9]+"
-          placeholder="players amount..."
-          onChange={(e) => setPlayers(e.target.value)}
-          value={Players}
-          onKeyUp={(e) => {
-            if (e.key === "Enter") {
-              PlayerAdder();
-            }
-          }}
+        {!showOptions && (
+          <button
+            onClick={() => setShowOptions(true)}
+            class="btn btn-primary"
+            style={{
+              fontSize: "30px",
+            }}
+          >
+            Select an option
+          </button>
+        )}
+
+        {showOptions && (
+          <div>
+            <button
+              onClick={() => setSelectedOption(2)}
+              class="btn btn-primary"
+              style={{
+                fontSize: "30px",
+              }}
+            >
+              2 players
+            </button>
+            <button
+              onClick={() => setSelectedOption(3)}
+              class="btn btn-primary"
+              style={{
+                fontSize: "30px",
+              }}
+            >
+              3 players
+            </button>
+            <button
+              onClick={() => setSelectedOption("custom")}
+              class="btn btn-primary"
+              style={{
+                fontSize: "30px",
+              }}
+            >
+              Custom
+            </button>
+          </div>
+        )}
+
+        {selectedOption === "custom" && (
+          <input
+            type="number"
+            inputMode="numeric"
+            pattern="[0-9]+"
+            placeholder="players amount..."
+            onChange={(e) => setPlayers(e.target.value)}
+            value={Players}
+            onKeyUp={(e) => {
+              if (e.key === "Enter") {
+                PlayerAdder();
+              }
+            }}
+            style={{
+              alignItems: "center",
+              marginLeft: "10vh",
+              marginRight: "10vh",
+              minWidth: "100vh",
+              textAlign: "center",
+              fontSize: "10vh",
+            }}
+          />
+        )}
+
+        <br />
+
+        <button
+          onClick={PlayerAdder}
+          class="btn btn-primary"
           style={{
-            alignItems: "center",
-            marginLeft: "10vh",
-            marginRight: "10vh",
-            minWidth: "100vh",
-            textAlign: "center",
-            fontSize: "10vh",
+            fontSize: "40px",
           }}
-        />
+        >
+          Start game
+        </button>
+
+        <br />
+
         <Link to="/">
-          <br />
-          <button>emergency exit</button>
+          <button
+            class="btn btn-primary"
+            style={{
+              fontSize: "20px",
+            }}
+          >
+            Emergency exit
+          </button>
         </Link>
       </div>
-
-      {/* {showOptions && (
-        <div
-          style={{ margin: "0 auto", fontSize: "40px", padding: "10px 20px" }}
-        >
-          <p>Choose one:</p>
-          {options.map((option) => (
-            <label key={option.value}>
-              <input
-                type="radio"
-                name="option"
-                value={option.value}
-                checked={selectedOption === option.value}
-                onChange={handleOptionSelect}
-              />{" "}
-              {option.label}
-            </label>
-          ))}
-          <br />
-          <button onClick={handleSubmit}>Submit</button>
-        </div>
-      )} */}
     </div>
   );
 }

@@ -49,9 +49,15 @@ const Construction = ({ onChange, language, code, theme }) => {
       </div>
       <button
         onClick={checkingtype}
-        style={{ margin: "0 auto", fontSize: "25px", padding: "10px 20px" }}
+        style={{
+          fontSize: "15px",
+          padding: "10px 20px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
       >
-        Next ➠
+        Done ➠
       </button>
     </div>
   );

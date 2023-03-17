@@ -35,7 +35,7 @@ export default function SelectPlayerPage() {
             onClick={() => setShowOptions(true)}
             class="btn btn-primary"
             style={{
-              fontSize: "30px",
+              fontSize: "100px",
             }}
           >
             Select an option
@@ -48,7 +48,8 @@ export default function SelectPlayerPage() {
               onClick={() => setSelectedOption(2)}
               class="btn btn-primary"
               style={{
-                fontSize: "30px",
+                fontSize: "100px",
+                marginRight: "20px",
               }}
             >
               2 players
@@ -57,7 +58,8 @@ export default function SelectPlayerPage() {
               onClick={() => setSelectedOption(3)}
               class="btn btn-primary"
               style={{
-                fontSize: "30px",
+                fontSize: "100px",
+                marginRight: "20px",
               }}
             >
               3 players
@@ -66,7 +68,8 @@ export default function SelectPlayerPage() {
               onClick={() => setSelectedOption("custom")}
               class="btn btn-primary"
               style={{
-                fontSize: "30px",
+                fontSize: "100px",
+                marginRight: "20px",
               }}
             >
               Custom
@@ -94,6 +97,7 @@ export default function SelectPlayerPage() {
               minWidth: "100vh",
               textAlign: "center",
               fontSize: "10vh",
+              marginTop: "10px",
             }}
           />
         )}
@@ -104,7 +108,8 @@ export default function SelectPlayerPage() {
           onClick={PlayerAdder}
           class="btn btn-primary"
           style={{
-            fontSize: "40px",
+            fontSize: "100px",
+            marginTop: "20px",
           }}
         >
           Start game
@@ -116,7 +121,8 @@ export default function SelectPlayerPage() {
           <button
             class="btn btn-primary"
             style={{
-              fontSize: "20px",
+              fontSize: "130px",
+              marginTop: "20px",
             }}
           >
             Emergency exit

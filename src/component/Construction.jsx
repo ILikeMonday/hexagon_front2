@@ -49,6 +49,7 @@ const Construction = ({ onChange, language, code, theme }) => {
       </div>
       <button
         onClick={checkingtype}
+        class="btn btn-primary"
         style={{
           fontSize: "15px",
           padding: "10px 20px",

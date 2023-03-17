@@ -46,3 +46,9 @@ svg g text {
 .HexGrid::-webkit-scrollbar-thumb:hover {
   background: #9e3131;
 }
+
+.sticky {
+  position: sticky;
+  top: 0;
+  bottom: 0;
+}

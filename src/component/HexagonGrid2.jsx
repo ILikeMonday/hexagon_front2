@@ -90,10 +90,18 @@ export default function HexagonGrid2() {
           </Layout>
         </HexGrid>
       </div>
-      <button onClick={zoomin} class="btn btn-primary">
+      <button
+        onClick={zoomin}
+        class="btn btn-info sticky"
+        style={{ marginRight: "10px", fontSize: "40px" }}
+      >
         Zoom in
       </button>
-      <button onClick={zoomout} class="btn btn-primary">
+      <button
+        onClick={zoomout}
+        class="btn btn-info sticky"
+        style={{ marginRight: "10px", fontSize: "40px" }}
+      >
         Zoom out
       </button>
     </div>

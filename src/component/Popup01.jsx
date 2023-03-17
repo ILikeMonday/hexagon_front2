@@ -34,7 +34,13 @@ export default function PopupGfg() {
               <Construction />
             </div>
 
-            <button onClick={() => close()}>Close modal</button>
+            <button
+              onClick={() => close()}
+              class="btn btn-primary"
+              style={{ marginTop: "5px" }}
+            >
+              Close modal
+            </button>
           </div>
         )}
       </Popup>

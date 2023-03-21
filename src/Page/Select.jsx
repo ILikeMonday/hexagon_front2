@@ -82,7 +82,7 @@ function Select({ onNext }) {
 
   return (
     <div style={{ color: "#3E9DDE", fontSize: "50px" }}>
-      <h1>What is your name?</h1>
+      <h1>What's your name?</h1>
       <form onSubmit={handleSubmit}>
         <label>
           <input

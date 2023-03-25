@@ -9,12 +9,6 @@ export default function SelectPlayerPage() {
   const row = 15;
   const col = 20;
 
-  const handleNameChange = (index, event) => {
-    const newPlayers = [...players];
-    newPlayers[index].name = event.target.value;
-    setPlayers(newPlayers);
-  };
-
   const PlayerAdder = () => {
     if (selectedOption === null) {
       alert("Please select an option");
@@ -23,7 +17,10 @@ export default function SelectPlayerPage() {
       else if (players.length > row * col)
         alert("Too many players for the field");
       else {
-        navigate("/PlayGround", { state: { players } });
+        const playerData = [...Array(parseInt(selectedOption))].map(
+          (_, index) => ({ name: players[index].name })
+        );
+        navigate("/PlayGround", { state: { players: playerData } });
       }
     } else {
       const playerData = [...Array(parseInt(selectedOption))].map(
@@ -94,23 +91,17 @@ export default function SelectPlayerPage() {
             </button>
           </div>
         )}
-
         {selectedOption === "custom" && (
-          <div>
+          <>
             <input
               type="number"
               inputMode="numeric"
               pattern="[0-9]+"
-              placeholder="players amount..."
+              placeholder="Number of players..."
               onChange={(e) =>
                 setPlayers(Array(parseInt(e.target.value)).fill({ name: "" }))
               }
               value={players.length > 0 ? players.length : ""}
-              onKeyUp={(e) => {
-                if (e.key === "Enter") {
-                  PlayerAdder();
-                }
-              }}
               style={{
                 alignItems: "center",
                 marginLeft: "10vh",
@@ -121,49 +112,14 @@ export default function SelectPlayerPage() {
                 marginTop: "10px",
               }}
             />
-            {players.slice(0, players.length).map((player, index) => (
-              <div key={index}>
-                <label
-                  htmlFor={`player-${index}`}
-                  style={{
-                    fontSize: "5vh",
-                    marginRight: "10px",
-                    color: "aqua",
-                  }}
-                >
-                  Player {index + 1} name:
-                </label>
-                <input
-                  type="text"
-                  id={`player-${index}`}
-                  placeholder={`Player ${index + 1} name...`}
-                  style={{
-                    fontSize: "5vh",
-                    padding: "10px",
-                    marginBottom: "10px",
-                    marginTop: "10px",
-                  }}
-                  value={player.name}
-                  onChange={(e) => handleNameChange(index, e)}
-                />
-              </div>
-            ))}
-          </div>
-        )}
-
-        {selectedOption !== "custom" && selectedOption !== null && (
-          <div>
-            {Array(selectedOption)
-              .fill()
-              .map((_, index) => (
+            {players.length > 0 &&
+              [...Array(players.length)].map((_, index) => (
                 <div key={index}>
                   <label
                     htmlFor={`player-${index}`}
                     style={{
                       fontSize: "5vh",
                       marginRight: "10px",
-                      marginBottom: "10px",
-                      color: "aqua",
                     }}
                   >
                     Player {index + 1} name:
@@ -176,7 +132,42 @@ export default function SelectPlayerPage() {
                       fontSize: "5vh",
                       padding: "10px",
                       marginBottom: "10px",
-                      marginTop: "10px",
+                    }}
+                    value={players[index].name}
+                    onChange={(e) => {
+                      const updatedPlayers = [...players];
+                      updatedPlayers[index].name = e.target.value;
+                      setPlayers(updatedPlayers);
+                    }}
+                  />
+                </div>
+              ))}
+          </>
+        )}
+
+        {selectedOption !== null && selectedOption !== "custom" && (
+          <div>
+            {Array(selectedOption)
+              .fill()
+              .map((_, index) => (
+                <div key={index}>
+                  <label
+                    htmlFor={`player-${index}`}
+                    style={{
+                      fontSize: "5vh",
+                      marginRight: "10px",
+                    }}
+                  >
+                    Player {index + 1} name:
+                  </label>
+                  <input
+                    type="text"
+                    id={`player-${index}`}
+                    placeholder={`Player ${index + 1} name...`}
+                    style={{
+                      fontSize: "5vh",
+                      padding: "10px",
+                      marginBottom: "10px",
                     }}
                     onChange={(e) => {
                       const updatedPlayers = [...players];
@@ -188,6 +179,8 @@ export default function SelectPlayerPage() {
               ))}
           </div>
         )}
+
+        <br />
 
         <br />
 

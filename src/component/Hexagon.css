@@ -27,7 +27,7 @@ svg g text {
   background-position: center center;
   background-size: cover;
   width: 100vh;
-  height: 90vh;
+  height: 80vh;
 }
 
 .HexGrid::-webkit-scrollbar {
@@ -51,4 +51,9 @@ svg g text {
   position: sticky;
   top: 0;
   bottom: 0;
+}
+
+.zoom {
+  height: 30px;
+  width: 32px;
 }

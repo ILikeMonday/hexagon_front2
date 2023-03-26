@@ -7,7 +7,7 @@ export default function PopupGfg() {
   return (
     <div>
       <Popup
-        style={{ width: "10%", height: "10%" }}
+        style={{ width: "min(100%-2rem,600px)", marginInline: "auto" }}
         trigger={
           <button
             style={{

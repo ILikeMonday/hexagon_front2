@@ -143,3 +143,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.playground {
+  display: grid;
+  grid-template-areas: "left-div" "right-div" "div3";
+}
+.left-div {
+  grid-area: left-div;
+}
+.right-div {
+  grid-area: right-div;
+}
+@media only screen and (min-width: 1000px) {
+  .playground {
+    grid-template-areas: "left-div right-div";
+  }
+}

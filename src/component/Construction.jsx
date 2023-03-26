@@ -76,7 +76,7 @@ const Construction = ({ onChange, language, code, theme }) => {
   }, []);
 
   return (
-    <div style={{ position: "sticky", top: "20px" }}>
+    <div className="right-div">
       <h1
         style={{
           margin: "0 auto",
@@ -115,9 +115,8 @@ const Construction = ({ onChange, language, code, theme }) => {
         }}
       >
         <Editor
-          height="85vh"
+          height="70vh"
           width={`80%`}
-          language={language || "javascript"}
           value={value}
           theme="vs-dark"
           defaultValue="// some comment"
@@ -133,6 +132,9 @@ const Construction = ({ onChange, language, code, theme }) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          margin: "auto",
+          width: "50%",
+          border: "3px solid green",
         }}
       >
         Done ➠

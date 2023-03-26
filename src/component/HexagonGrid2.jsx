@@ -1,14 +1,35 @@
+import { Client } from "@stomp/stompjs";
 import React, { useState } from "react";
+import { useEffect } from "react";
 // import Hexagon from "./Hexagon";
 import { HexGrid, Layout, Hexagon, Pattern } from "react-hexgrid";
 import Hexagongen from "./Hexagongen";
-
+import Zoomout from "./img/magnifying-glass.png";
+import Zoomin from "./img/zoom-in.png";
+import Reset from "./img/reset.png";
 export default function HexagonGrid2() {
   // const [hexagons, setHexagons] = useState([[]]);
   const [scaleconfig, setScaleconfig] = useState(100);
   const hexagonSize = { x: 8, y: 8 };
-  const row = 10;
-  const col = 20;
+  const [row, setrow] = useState(0);
+  const [col, setcol] = useState(0);
+  let client;
+
+  useEffect(() => {
+    if (!client) {
+      client = new Client({
+        brokerURL: "ws://localhost:8080/demo-websocket",
+        onConnect: () => {
+          client.subscribe("/app/RowCol", (message) => {
+            const body = JSON.parse(message.body);
+            setrow(body[0]);
+            setcol(body[1]);
+          });
+        },
+      });
+      client.activate();
+    }
+  }, []);
   const hexagons = [];
   for (let y = 0; y < row; y++) {
     let j = y;
@@ -31,12 +52,13 @@ export default function HexagonGrid2() {
   const zoomin = () => {
     if (scaleconfig >= 500) return;
     setScaleconfig(scaleconfig + 10);
-    console.log(scaleconfig);
   };
   const zoomout = () => {
     if (scaleconfig <= 10) return;
     setScaleconfig(scaleconfig - 10);
-    console.log(scaleconfig);
+  };
+  const reset = () => {
+    setScaleconfig(100);
   };
   const own = () => {
     console.log(1);
@@ -56,7 +78,7 @@ export default function HexagonGrid2() {
     console.log(2);
   };
   return (
-    <div>
+    <div className="left-div">
       <h1
         style={{
           margin: "0 auto",
@@ -95,14 +117,21 @@ export default function HexagonGrid2() {
         class="btn btn-info sticky"
         style={{ marginRight: "10px", fontSize: "40px" }}
       >
-        Zoom in
+        <img className="zoom" src={Zoomin} />
       </button>
       <button
         onClick={zoomout}
         class="btn btn-info sticky"
         style={{ marginRight: "10px", fontSize: "40px" }}
       >
-        Zoom out
+        <img className="zoom" src={Zoomout} />
+      </button>
+      <button
+        onClick={reset}
+        class="btn btn-info sticky"
+        style={{ marginRight: "10px", fontSize: "40px" }}
+      >
+        <img className="zoom" src={Reset} />
       </button>
     </div>
   );

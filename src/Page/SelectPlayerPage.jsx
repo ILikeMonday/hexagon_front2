@@ -5,6 +5,7 @@ export default function SelectPlayerPage() {
   const [showOptions, setShowOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const [players, setPlayers] = useState([]);
+  const [numOfPlayers, setNumOfPlayers] = useState(null);
   const navigate = useNavigate();
   const row = 15;
   const col = 20;
@@ -17,10 +18,7 @@ export default function SelectPlayerPage() {
       else if (players.length > row * col)
         alert("Too many players for the field");
       else {
-        const playerData = [...Array(parseInt(selectedOption))].map(
-          (_, index) => ({ name: players[index].name })
-        );
-        navigate("/PlayGround", { state: { players: playerData } });
+        navigate("/PlayGround", { state: { players } });
       }
     } else {
       const playerData = [...Array(parseInt(selectedOption))].map(
@@ -91,61 +89,38 @@ export default function SelectPlayerPage() {
             </button>
           </div>
         )}
+
         {selectedOption === "custom" && (
-          <>
-            <input
-              type="number"
-              inputMode="numeric"
-              pattern="[0-9]+"
-              placeholder="Number of players..."
-              onChange={(e) =>
-                setPlayers(Array(parseInt(e.target.value)).fill({ name: "" }))
+          <input
+            type="number"
+            inputMode="numeric"
+            pattern="[0-9]+"
+            placeholder="players amount..."
+            onChange={(e) => {
+              const numOfPlayers = parseInt(e.target.value);
+              setSelectedOption(numOfPlayers ? "custom" : "");
+              setPlayers([{ name: "" }]);
+              setNumOfPlayers(numOfPlayers);
+            }}
+            value={numOfPlayers}
+            onKeyUp={(e) => {
+              if (e.key === "Enter") {
+                setSelectedOption(numOfPlayers);
               }
-              value={players.length > 0 ? players.length : ""}
-              style={{
-                alignItems: "center",
-                marginLeft: "10vh",
-                marginRight: "10vh",
-                minWidth: "100vh",
-                textAlign: "center",
-                fontSize: "10vh",
-                marginTop: "10px",
-              }}
-            />
-            {players.length > 0 &&
-              [...Array(players.length)].map((_, index) => (
-                <div key={index}>
-                  <label
-                    htmlFor={`player-${index}`}
-                    style={{
-                      fontSize: "5vh",
-                      marginRight: "10px",
-                    }}
-                  >
-                    Player {index + 1} name:
-                  </label>
-                  <input
-                    type="text"
-                    id={`player-${index}`}
-                    placeholder={`Player ${index + 1} name...`}
-                    style={{
-                      fontSize: "5vh",
-                      padding: "10px",
-                      marginBottom: "10px",
-                    }}
-                    value={players[index].name}
-                    onChange={(e) => {
-                      const updatedPlayers = [...players];
-                      updatedPlayers[index].name = e.target.value;
-                      setPlayers(updatedPlayers);
-                    }}
-                  />
-                </div>
-              ))}
-          </>
+            }}
+            style={{
+              alignItems: "center",
+              marginLeft: "10vh",
+              marginRight: "10vh",
+              minWidth: "100vh",
+              textAlign: "center",
+              fontSize: "10vh",
+              marginTop: "10px",
+            }}
+          />
         )}
 
-        {selectedOption !== null && selectedOption !== "custom" && (
+        {selectedOption !== null && (
           <div>
             {Array(selectedOption)
               .fill()
@@ -179,8 +154,6 @@ export default function SelectPlayerPage() {
               ))}
           </div>
         )}
-
-        <br />
 
         <br />
 

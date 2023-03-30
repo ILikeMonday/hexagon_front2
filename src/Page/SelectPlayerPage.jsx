@@ -8,8 +8,8 @@ export default function SelectPlayerPage() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [players, setPlayers] = useState([]);
   const navigate = useNavigate();
-  const [row, setrow] = useState(0);
-  const [col, setcol] = useState(0);
+  const [row, setrow] = useState(10);
+  const [col, setcol] = useState(10);
 
   let client;
   useEffect(() => {
@@ -166,7 +166,7 @@ export default function SelectPlayerPage() {
           </>
         )}
 
-        {selectedOption !== null && selectedOption !== "custom" && (
+        {selectedOption !== null && (
           <div>
             {Array(selectedOption)
               .fill()

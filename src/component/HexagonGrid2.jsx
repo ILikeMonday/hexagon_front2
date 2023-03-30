@@ -11,8 +11,8 @@ export default function HexagonGrid2() {
   // const [hexagons, setHexagons] = useState([[]]);
   const [scaleconfig, setScaleconfig] = useState(100);
   const hexagonSize = { x: 8, y: 8 };
-  const [row, setrow] = useState(0);
-  const [col, setcol] = useState(0);
+  const [row, setrow] = useState(10);
+  const [col, setcol] = useState(10);
   let client;
 
   useEffect(() => {

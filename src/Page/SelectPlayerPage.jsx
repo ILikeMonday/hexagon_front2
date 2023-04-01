@@ -166,7 +166,7 @@ export default function SelectPlayerPage() {
           </>
         )}
 
-        {selectedOption !== null && (
+        {selectedOption !== null && selectedOption !== "custom" && (
           <div>
             {Array(selectedOption)
               .fill()

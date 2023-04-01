@@ -1,8 +1,8 @@
 import React from "react";
 import Construction from "../component/Construction";
-import HexGridDemo from "../component/Grid";
+
 import HexagonGen from "../component/Hexagongen";
-import HexagonGrid from "../component/HexagonGrid";
+
 import HexagonGrid2 from "../component/HexagonGrid2";
 
 import Test from "../component/Test";

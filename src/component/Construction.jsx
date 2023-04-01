@@ -1,4 +1,3 @@
-import CodeEditor from "@uiw/react-textarea-code-editor";
 import React, { useState, useEffect, useRef } from "react";
 import Editor from "@monaco-editor/react";
 
@@ -42,7 +41,7 @@ const Construction = ({ onChange, language, code, theme }) => {
           (seconds > 9 ? seconds : "0" + seconds)
       );
     }
-    if (timer === "00:00:00") {
+    if (total === 0) {
       console.log(value);
     }
   };
@@ -51,7 +50,7 @@ const Construction = ({ onChange, language, code, theme }) => {
     // If you adjust it you should also need to
     // adjust the Endtime formula we are about
     // to code next
-    setTimer("00:00:10");
+    setTimer("00:00:40");
     // If you try to remove this line the
     // updating of timer Variable will be
     // after 1000ms or 1sec
@@ -67,7 +66,7 @@ const Construction = ({ onChange, language, code, theme }) => {
 
     // This is where you need to adjust if
     // you entend to add more time
-    deadline.setSeconds(deadline.getSeconds() + 10);
+    deadline.setSeconds(deadline.getSeconds() + 40);
 
     return deadline;
   };

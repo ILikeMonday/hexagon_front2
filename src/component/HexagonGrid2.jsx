@@ -112,27 +112,36 @@ export default function HexagonGrid2() {
           </Layout>
         </HexGrid>
       </div>
-      <button
-        onClick={zoomin}
-        class="btn btn-info sticky"
-        style={{ marginRight: "10px", fontSize: "40px" }}
+      <div
+        style={{
+          position: "fixed",
+
+          right: 300,
+          transform: "translateY(-50%)",
+        }}
       >
-        <img className="zoom" src={Zoomin} />
-      </button>
-      <button
-        onClick={zoomout}
-        class="btn btn-info sticky"
-        style={{ marginRight: "10px", fontSize: "40px" }}
-      >
-        <img className="zoom" src={Zoomout} />
-      </button>
-      <button
-        onClick={reset}
-        class="btn btn-info sticky"
-        style={{ marginRight: "10px", fontSize: "40px" }}
-      >
-        <img className="zoom" src={Reset} />
-      </button>
+        <button
+          onClick={zoomin}
+          class="btn btn-info sticky"
+          style={{ marginRight: "10px", fontSize: "40px" }}
+        >
+          <img className="zoom" src={Zoomin} />
+        </button>
+        <button
+          onClick={zoomout}
+          class="btn btn-info sticky"
+          style={{ marginRight: "10px", fontSize: "40px" }}
+        >
+          <img className="zoom" src={Zoomout} />
+        </button>
+        <button
+          onClick={reset}
+          class="btn btn-info sticky"
+          style={{ marginRight: "10px", fontSize: "40px" }}
+        >
+          <img className="zoom" src={Reset} />
+        </button>
+      </div>
     </div>
   );
 }

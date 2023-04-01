@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Editor from "@monaco-editor/react";
 import Status from "./Status";
+import Status_hex from "./Status_hex";
 
 const Construction = ({ onChange, language, code }) => {
   const [value, setValue] = useState(code || "");
@@ -139,8 +140,19 @@ const Construction = ({ onChange, language, code }) => {
       >
         Sent plan ➠
       </button>
-      <div>
-        <Status />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          width: "70%",
+          marginLeft: "80px",
+          height: "35vh",
+        }}
+      >
+        <Status style={{ marginRight: "70px" }} />
+
+        <Status_hex />
       </div>
     </div>
   );

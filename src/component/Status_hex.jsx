@@ -1,41 +1,38 @@
 import React from "react";
-import SelectPlayerPage from "../Page/SelectPlayerPage";
-import { useNavigate } from "react-router-dom";
 
-export default function Status() {
+export default function Status_hex() {
   return (
     <div
       style={{
         backgroundColor: "blue",
         padding: "20px",
         borderRadius: "40px",
-        width: "80%",
-
-        justifyContent: "center",
       }}
     >
       <h1
         style={{
+          marginLeft: "0%",
           marginTop: "0px",
-          marginBottom: "10px",
+          width: "30%",
           color: "#fff",
           fontSize: "50px",
         }}
       >
-        Status
+        Status_hexagon
       </h1>
-
       <div
         style={{
+          marginLeft: "10%",
           marginTop: "10px",
+          width: "80%",
           color: "#fff",
         }}
       >
-        name:player
+        position:[x,y]
         <br />
-        budget:$
+        owner:name/unknown
         <br />
-        region(s):num
+        deposit:num/unknown
       </div>
     </div>
   );

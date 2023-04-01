@@ -159,6 +159,7 @@ export default function SelectPlayerPage() {
                       const updatedPlayers = [...players];
                       updatedPlayers[index].name = e.target.value;
                       setPlayers(updatedPlayers);
+                      console.log(players[index].name);
                     }}
                   />
                 </div>

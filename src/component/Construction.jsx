@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import Editor from "@monaco-editor/react";
+import Status from "./Status";
 
-const Construction = ({ onChange, language, code, theme }) => {
+const Construction = ({ onChange, language, code }) => {
   const [value, setValue] = useState(code || "");
   const Ref = useRef(null);
   const [timer, setTimer] = useState("00:00:00");
@@ -114,7 +115,7 @@ const Construction = ({ onChange, language, code, theme }) => {
         }}
       >
         <Editor
-          height="70vh"
+          height="35vh"
           width={`80%`}
           value={value}
           theme="vs-dark"
@@ -136,8 +137,11 @@ const Construction = ({ onChange, language, code, theme }) => {
           border: "3px solid green",
         }}
       >
-        Done ➠
+        Sent plan ➠
       </button>
+      <div>
+        <Status />
+      </div>
     </div>
   );
 };

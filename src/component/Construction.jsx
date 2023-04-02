@@ -9,8 +9,6 @@ import Turn from "./Turn";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 
-import Turn from "./Turn";
-
 let client;
 const Construction = ({ onChange, language, code }) => {
   const [value, setValue] = useState("t=2");

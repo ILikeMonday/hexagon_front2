@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Editor from "@monaco-editor/react";
 import Status from "./Status";
 import Status_hex from "./Status_hex";
+import Turn from "./Turn";
 
 const Construction = ({ onChange, language, code }) => {
   const [value, setValue] = useState(code || "");
@@ -94,16 +95,21 @@ const Construction = ({ onChange, language, code }) => {
       <div
         className="App"
         style={{
-          margin: "0 auto",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginRight: "220px",
           fontSize: "50px",
           padding: "10px 20px",
           color: "#3E9DDE",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
         }}
       >
-        <h2>{timer}</h2>
+        <div style={{ marginRight: "auto" }}>
+          <Turn />
+        </div>
+        <div style={{ marginLeft: "auto" }}>
+          <h2>{timer}</h2>
+        </div>
       </div>
 
       <div
@@ -146,11 +152,11 @@ const Construction = ({ onChange, language, code }) => {
           justifyContent: "space-between",
           alignItems: "center",
           width: "70%",
-          marginLeft: "80px",
-          height: "35vh",
+          marginLeft: "120px",
+          height: "30vh",
         }}
       >
-        <Status style={{ marginRight: "70px" }} />
+        <Status style={{ marginRight: "80px" }} />
 
         <Status_hex />
       </div>

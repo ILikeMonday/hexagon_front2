@@ -4,7 +4,7 @@ export default function Status_hex() {
   return (
     <div
       style={{
-        backgroundColor: "blue",
+        backgroundColor: "#004A9E",
         padding: "20px",
         borderRadius: "40px",
       }}
@@ -15,7 +15,7 @@ export default function Status_hex() {
           marginTop: "0px",
           width: "30%",
           color: "#fff",
-          fontSize: "50px",
+          fontSize: "40px",
         }}
       >
         Status_hexagon

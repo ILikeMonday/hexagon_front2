@@ -122,22 +122,22 @@ export default function HexagonGrid2() {
       >
         <button
           onClick={zoomin}
-          class="btn btn-info sticky"
-          style={{ marginRight: "10px", fontSize: "40px" }}
+          class="btn btn-info "
+          style={{ marginRight: "10px", fontSize: "40px", marginTop: "20px" }}
         >
           <img className="zoom" src={Zoomin} />
         </button>
         <button
           onClick={zoomout}
-          class="btn btn-info sticky"
-          style={{ marginRight: "10px", fontSize: "40px" }}
+          class="btn btn-info "
+          style={{ marginRight: "10px", fontSize: "40px", marginTop: "20px" }}
         >
           <img className="zoom" src={Zoomout} />
         </button>
         <button
           onClick={reset}
-          class="btn btn-info sticky"
-          style={{ marginRight: "10px", fontSize: "40px" }}
+          class="btn btn-info"
+          style={{ marginRight: "10px", fontSize: "40px", marginTop: "20px" }}
         >
           <img className="zoom" src={Reset} />
         </button>

@@ -1,32 +1,19 @@
 import React, { useEffect } from "react";
 import SelectPlayerPage from "../Page/SelectPlayerPage";
 import { useNavigate } from "react-router-dom";
-import { Client } from "@stomp/stompjs";
-let client;
+
+import { useState } from "react";
+
 // const playerData = (props) => {
 //   const name = players[index].name;
 //   return players[index].name;
 // };
 
-export default function Status() {
-  useEffect(() => {
-    if (!client) {
-      client = new Client({
-        brokerURL: "ws://localhost:8080/demo-websocket",
-        onConnect: () => {
-          client.subscribe("/app/GetStatus", (message) => {
-            const body = JSON.parse(message.body);
-            console.log(body);
-          });
-          client.subscribe("/topic/GetStatus", (message) => {
-            const body = JSON.parse(message.body);
-            console.log(body);
-          });
-        },
-      });
-      client.activate();
-    }
-  }, []);
+const Status = (props) => {
+  const { name, budget, len } = props;
+  const playername = name;
+  const amountRegion = len;
+
   return (
     <div
       style={{
@@ -48,19 +35,20 @@ export default function Status() {
       >
         Status
       </h1>
-
       <div
         style={{
           marginTop: "10px",
           color: "#fff",
         }}
       >
-        name:
+        {`name: ${playername}`}
         <br />
-        budget:$
+        {`budget: ${budget} $`}
         <br />
-        region(s):num
+        {`region(s): ${amountRegion}`}
       </div>
     </div>
   );
-}
+};
+
+export default React.memo(Status);

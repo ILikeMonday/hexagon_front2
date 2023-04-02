@@ -28,6 +28,11 @@ export default function SelectPlayerPage() {
           client.subscribe("/topic/IsAdded", (message) => {
             const body = JSON.parse(message.body);
             console.log(body);
+            if (body) {
+              client.publish({
+                destination: "/app/Status",
+              });
+            }
           });
         },
       });
@@ -44,6 +49,7 @@ export default function SelectPlayerPage() {
     if (client) {
       if (client.connected) {
         console.log(players);
+
         client.publish({
           destination: "/app/AddPlayers",
           body: JSON.stringify({
@@ -60,7 +66,6 @@ export default function SelectPlayerPage() {
   }, [selectedOption]);
 
   const PlayerAdder = () => {
-    console.log(typeof players);
     if (selectedOption === null) {
       alert("Please select an option");
     } else if (selectedOption === "custom") {
@@ -71,7 +76,7 @@ export default function SelectPlayerPage() {
         const playerData = [...Array(parseInt(selectedOption))].map(
           (_, index) => ({ name: players[index].name })
         );
-
+        SendPlayer();
         navigate("/PlayGround", { state: { players: playerData } });
       }
     } else {

@@ -197,7 +197,7 @@ const Construction = ({ onChange, language, code }) => {
                 marginTop: "10px",
               }}
             >
-              use previos plan
+              use previous plan
             </button>
           }
           position="left center"
@@ -212,7 +212,7 @@ const Construction = ({ onChange, language, code }) => {
                   alignItems: "center",
                 }}
               >
-                Use previos plan?
+                Use previous plan?
               </div>
               <div>
                 <Link to="/wait_room">

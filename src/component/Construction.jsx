@@ -5,7 +5,7 @@ import Status_hex from "./Status_hex";
 import { Client } from "@stomp/stompjs";
 let client;
 const Construction = ({ onChange, language, code }) => {
-  const [value, setValue] = useState(code || "hi");
+  const [value, setValue] = useState("hi");
   const Ref = useRef(null);
   const [timer, setTimer] = useState("00:00:00");
 
@@ -16,7 +16,7 @@ const Construction = ({ onChange, language, code }) => {
         onConnect: () => {
           client.subscribe("/topic/result", (message) => {
             const body = JSON.parse(message.body);
-            // console.log(body);
+            console.log(body);
           });
         },
       });

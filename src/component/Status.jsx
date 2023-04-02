@@ -11,7 +11,7 @@ export default function Status() {
   return (
     <div
       style={{
-        backgroundColor: "blue",
+        backgroundColor: "#004A9E",
         padding: "20px",
         borderRadius: "40px",
         width: "80%",
@@ -24,7 +24,7 @@ export default function Status() {
           marginTop: "0px",
           marginBottom: "10px",
           color: "#fff",
-          fontSize: "50px",
+          fontSize: "40px",
         }}
       >
         Status

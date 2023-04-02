@@ -5,6 +5,7 @@ import Status_hex from "./Status_hex";
 import { Client } from "@stomp/stompjs";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+import { Link, useNavigate } from "react-router-dom";
 
 import Turn from "./Turn";
 let client;
@@ -83,7 +84,7 @@ const Construction = ({ onChange, language, code }) => {
     // If you adjust it you should also need to
     // adjust the Endtime formula we are about
     // to code next
-    setTimer("00:00:40");
+    setTimer("00:00:10");
     // If you try to remove this line the
     // updating of timer Variable will be
     // after 1000ms or 1sec
@@ -99,7 +100,7 @@ const Construction = ({ onChange, language, code }) => {
 
     // This is where you need to adjust if
     // you entend to add more time
-    deadline.setSeconds(deadline.getSeconds() + 40);
+    deadline.setSeconds(deadline.getSeconds() + 10);
 
     return deadline;
   };
@@ -229,18 +230,20 @@ const Construction = ({ onChange, language, code }) => {
                 Use this construction?
               </div>
               <div>
-                <button
-                  class="btn btn-primary"
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    margin: "auto",
-                  }}
-                  onClick={checkingtype}
-                >
-                  Confirm
-                </button>
+                <Link to="/wait_room">
+                  <button
+                    class="btn btn-primary"
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      margin: "auto",
+                    }}
+                    onClick={checkingtype}
+                  >
+                    Confirm
+                  </button>
+                </Link>
               </div>
             </div>
           )}

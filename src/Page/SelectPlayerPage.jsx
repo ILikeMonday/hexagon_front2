@@ -7,7 +7,7 @@ import Status from "../component/Status";
 let client;
 
 export default function SelectPlayerPage() {
-  const [showOptions, setShowOptions] = useState(false);
+  const [showOptions, setShowOptions] = useState(true);
   const [selectedOption, setSelectedOption] = useState(null);
   const [players, setPlayers] = useState([]);
   const navigate = useNavigate();
@@ -93,18 +93,6 @@ export default function SelectPlayerPage() {
     <div>
       <p className="Topic">Number of players</p>
       <div style={{ textAlign: "center" }}>
-        {!showOptions && (
-          <button
-            onClick={() => setShowOptions(true)}
-            class="btn btn-primary"
-            style={{
-              fontSize: "100px",
-            }}
-          >
-            Select an option
-          </button>
-        )}
-
         {showOptions && (
           <div>
             <button
@@ -196,6 +184,7 @@ export default function SelectPlayerPage() {
                     style={{
                       fontSize: "5vh",
                       marginRight: "10px",
+                      color: "cyan",
                     }}
                   >
                     Player {index + 1} name:

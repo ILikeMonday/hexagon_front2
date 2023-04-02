@@ -7,6 +7,7 @@ import SelectPlayerPage from "./Page/SelectPlayerPage";
 import HowToPlayPage from "./Page/HowToPlayPage";
 import PlayGround from "./Page/PlayGround";
 import Players from "./component/Players";
+import Wait_room from "./component/Wait_room";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
       <Route path="/How-To-Play" element={<HowToPlayPage />} />
       <Route path="/Playground" element={<PlayGround />} />
       <Route path="/namePlayer" element={<Players />} />
+      <Route path="/wait_room" element={<Wait_room />} />
     </Routes>
   );
 }

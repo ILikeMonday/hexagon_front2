@@ -6,6 +6,7 @@ import { Client } from "@stomp/stompjs";
 import Turn from "./Turn";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+import { Link, useNavigate } from "react-router-dom";
 
 let client;
 const Construction = ({ onChange, language, code }) => {
@@ -97,7 +98,7 @@ const Construction = ({ onChange, language, code }) => {
     // If you adjust it you should also need to
     // adjust the Endtime formula we are about
     // to code next
-    setTimer("00:00:40");
+    setTimer("00:00:10");
     // If you try to remove this line the
     // updating of timer Variable will be
     // after 1000ms or 1sec
@@ -113,7 +114,7 @@ const Construction = ({ onChange, language, code }) => {
 
     // This is where you need to adjust if
     // you entend to add more time
-    deadline.setSeconds(deadline.getSeconds() + 120);
+    deadline.setSeconds(deadline.getSeconds() + 10);
 
     return deadline;
   };
@@ -191,23 +192,59 @@ const Construction = ({ onChange, language, code }) => {
         Sent plan ➠
       </button> */}
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <button
-          class="btn btn-primary"
-          style={{
-            fontSize: "15px",
-            padding: "10px 20px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: "auto",
-            width: "25%",
-            border: "3px solid red",
-            marginLeft: "170px",
-            marginTop: "10px",
-          }}
+        <Popup
+          trigger={
+            <button
+              class="btn btn-primary"
+              style={{
+                fontSize: "15px",
+                padding: "10px 20px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                margin: "auto",
+                width: "25%",
+                border: "3px solid red",
+                marginLeft: "200px",
+                marginTop: "10px",
+              }}
+            >
+              use previous plan
+            </button>
+          }
+          position="left center"
         >
-          Use previos plan
-        </button>
+          {() => (
+            <div className="model">
+              <div
+                className="content"
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                Use previous plan?
+              </div>
+              <div>
+                <Link to="/wait_room">
+                  <button
+                    class="btn btn-primary"
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      margin: "auto",
+                    }}
+                    onClick={checkingtype}
+                  >
+                    Confirm
+                  </button>
+                </Link>
+              </div>
+            </div>
+          )}
+        </Popup>
         <Popup
           trigger={
             <button
@@ -243,18 +280,20 @@ const Construction = ({ onChange, language, code }) => {
                 Use this construction?
               </div>
               <div>
-                <button
-                  class="btn btn-primary"
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    margin: "auto",
-                  }}
-                  onClick={checkingtype}
-                >
-                  Confirm
-                </button>
+                <Link to="/wait_room">
+                  <button
+                    class="btn btn-primary"
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      margin: "auto",
+                    }}
+                    onClick={checkingtype}
+                  >
+                    Confirm
+                  </button>
+                </Link>
               </div>
             </div>
           )}

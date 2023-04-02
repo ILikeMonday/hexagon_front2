@@ -8,6 +8,9 @@ import { useState } from "react";
 //   const name = players[index].name;
 //   return players[index].name;
 // };
+let name_player = 0;
+let money = 0;
+let num = 0;
 
 const Status = (props) => {
   const { name, budget, len } = props;

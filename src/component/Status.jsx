@@ -2,6 +2,11 @@ import React from "react";
 import SelectPlayerPage from "../Page/SelectPlayerPage";
 import { useNavigate } from "react-router-dom";
 
+// const playerData = (props) => {
+//   const name = players[index].name;
+//   return players[index].name;
+// };
+
 export default function Status() {
   return (
     <div
@@ -31,7 +36,7 @@ export default function Status() {
           color: "#fff",
         }}
       >
-        name:player
+        name:
         <br />
         budget:$
         <br />

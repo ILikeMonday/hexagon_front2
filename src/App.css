@@ -158,7 +158,3 @@ code {
     grid-template-areas: "left-div right-div";
   }
 }
-.status-container {
-  display: flex;
-  justify-content: space-between;
-}

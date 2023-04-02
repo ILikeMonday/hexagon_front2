@@ -2,6 +2,7 @@ import { Client } from "@stomp/stompjs";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Status from "../component/Status";
 
 export default function SelectPlayerPage() {
   const [showOptions, setShowOptions] = useState(false);
@@ -54,7 +55,6 @@ export default function SelectPlayerPage() {
   return (
     <div>
       <p className="Topic">Number of players</p>
-
       <div style={{ textAlign: "center" }}>
         {!showOptions && (
           <button
@@ -74,7 +74,6 @@ export default function SelectPlayerPage() {
               onClick={() => {
                 setSelectedOption(2);
                 setPlayers(Array(2).fill({ name: "" })); // Add 2 to the players array
-                console.log();
               }}
               class="btn btn-primary"
               style={{
@@ -100,7 +99,7 @@ export default function SelectPlayerPage() {
             <button
               onClick={() => {
                 setSelectedOption("custom");
-                setPlayers([{ name: "" }]);
+                setPlayers(Array("custom").fill({ name: "" }));
               }}
               className="btn btn-primary"
               style={{
@@ -113,7 +112,7 @@ export default function SelectPlayerPage() {
           </div>
         )}
         {selectedOption === "custom" && (
-          <>
+          <div>
             <input
               type="number"
               inputMode="numeric"
@@ -123,6 +122,13 @@ export default function SelectPlayerPage() {
                 setPlayers(Array(parseInt(e.target.value)).fill({ name: "" }))
               }
               value={players.length > 0 ? players.length : ""}
+              onKeyUp={(e) => {
+                if (e.key === "Enter") {
+                  setSelectedOption(parseInt(e.target.value));
+                  PlayerAdder(parseInt(e.target.value));
+                  console.log(parseInt(e.target.value));
+                }
+              }}
               style={{
                 alignItems: "center",
                 marginLeft: "10vh",
@@ -133,41 +139,10 @@ export default function SelectPlayerPage() {
                 marginTop: "10px",
               }}
             />
-            {players.length > 0 &&
-              [...Array(players.length)].map((_, index) => (
-                <div key={index}>
-                  <label
-                    htmlFor={`player-${index}`}
-                    style={{
-                      fontSize: "5vh",
-                      marginRight: "10px",
-                    }}
-                  >
-                    Player {index + 1} name:
-                  </label>
-                  <input
-                    type="text"
-                    id={`player-${index}`}
-                    placeholder={`Player ${index + 1} name...`}
-                    style={{
-                      fontSize: "5vh",
-                      padding: "10px",
-                      marginBottom: "10px",
-                    }}
-                    value={players[index].name}
-                    onChange={(e) => {
-                      const updatedPlayers = [...players];
-                      updatedPlayers[index].name = e.target.value;
-                      setPlayers(updatedPlayers);
-                      console.log(players[index].name);
-                    }}
-                  />
-                </div>
-              ))}
-          </>
+          </div>
         )}
 
-        {selectedOption !== null && selectedOption !== "custom" && (
+        {selectedOption !== null && (
           <div>
             {Array(selectedOption)
               .fill()
@@ -195,6 +170,7 @@ export default function SelectPlayerPage() {
                       const updatedPlayers = [...players];
                       updatedPlayers[index] = { name: e.target.value };
                       setPlayers(updatedPlayers);
+                      console.log(updatedPlayers);
                     }}
                   />
                 </div>

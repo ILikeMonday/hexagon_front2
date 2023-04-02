@@ -1,9 +1,8 @@
 .notown {
-  fill: #924949;
   /* color: #98ff00; */
 }
 .own {
-  fill: #0400ff;
+  fill: #8583e4;
 }
 .hextext {
   color: #0400ff;
@@ -14,6 +13,7 @@ svg g text {
   font-size: 0.22em;
   fill: #000000;
 }
+
 .HexGrid {
   /* overflow: scroll; */
   position: static;

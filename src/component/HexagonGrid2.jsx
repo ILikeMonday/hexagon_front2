@@ -4,6 +4,7 @@ import { useEffect } from "react";
 // import Hexagon from "./Hexagon";
 import { HexGrid, Layout, Hexagon, Pattern } from "react-hexgrid";
 import Hexagongen from "./Hexagongen";
+import mothership from "./img/mothership.png";
 import Zoomout from "./img/magnifying-glass.png";
 import Zoomin from "./img/zoom-in.png";
 import Reset from "./img/reset.png";
@@ -36,16 +37,13 @@ export default function HexagonGrid2() {
     let k = 1;
     for (let x = 0; x < col; x++) {
       k++;
-      hexagons.push(
-        <Hexagongen
-          key={`hex-${x},${y}`}
-          x={x + 1}
-          y={y + 1}
-          columadjust={j}
-          IsOwned={false}
-          img={"notown"}
-        />
-      );
+      hexagons.push({
+        x: x + 1,
+        y: y + 1,
+        columadjust: j,
+        IsOwned: false,
+        img: "notown",
+      });
       if (k % 2 === 0) j--;
     }
   }
@@ -108,8 +106,18 @@ export default function HexagonGrid2() {
           }`}
         >
           <Layout size={hexagonSize} spacing={1.05} flat={true}>
-            {hexagons}
+            {hexagons.map((props) => (
+              <Hexagongen
+                key={`hex-${props.x},${props.y}`}
+                x={props.x}
+                y={props.y}
+                columadjust={props.columadjust}
+                IsOwned={false}
+              />
+            ))}
+            <img src></img>
           </Layout>
+          {/* <Pattern id="pat-1" link={`${mothership}`} /> */}
         </HexGrid>
       </div>
       <div

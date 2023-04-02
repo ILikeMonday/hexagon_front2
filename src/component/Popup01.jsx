@@ -18,10 +18,7 @@ export default function PopupGfg() {
               fontSize: "50Px",
             }}
             class="btn btn-primary"
-          >
-            {" "}
-            Click to build your Construction{" "}
-          </button>
+          ></button>
         }
         modal
         nested

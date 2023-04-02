@@ -40,7 +40,7 @@ export default function HomePage() {
   return (
     <div style={{ minHeight: "100vh", textAlign: "center" }}>
       <div>
-        <h1 className="Topic">Upbeat!!!</h1>
+        <h1 className="Topic">Upbeat!!! Group24</h1>
         <div
           style={{
             display: "flex",

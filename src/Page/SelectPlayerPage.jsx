@@ -2,7 +2,6 @@ import { Client } from "@stomp/stompjs";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Status from "../component/Status";
 
 export default function SelectPlayerPage() {
   const [showOptions, setShowOptions] = useState(false);
@@ -29,6 +28,10 @@ export default function SelectPlayerPage() {
       client.activate();
     }
   }, []);
+
+  useEffect(() => {
+    setPlayers([]);
+  }, [selectedOption]);
 
   const PlayerAdder = () => {
     if (selectedOption === null) {
@@ -71,9 +74,11 @@ export default function SelectPlayerPage() {
         {showOptions && (
           <div>
             <button
-              onClick={() => {
+              onClick={(e) => {
+                setPlayers(""); // Clear the players array
                 setSelectedOption(2);
                 setPlayers(Array(2).fill({ name: "" })); // Add 2 to the players array
+                e.target.previousSibling.value = "";
               }}
               class="btn btn-primary"
               style={{
@@ -84,9 +89,11 @@ export default function SelectPlayerPage() {
               2 players
             </button>
             <button
-              onClick={() => {
+              onClick={(e) => {
+                setPlayers(""); // Clear the players array
                 setSelectedOption(3);
                 setPlayers(Array(3).fill({ name: "" })); // Add 3 to the players array
+                e.target.previousSibling.value = "";
               }}
               class="btn btn-primary"
               style={{
@@ -97,9 +104,11 @@ export default function SelectPlayerPage() {
               3 players
             </button>
             <button
-              onClick={() => {
+              onClick={(e) => {
+                setPlayers(""); // Clear the players array
                 setSelectedOption("custom");
                 setPlayers(Array("custom").fill({ name: "" }));
+                e.target.previousSibling.value = "";
               }}
               className="btn btn-primary"
               style={{

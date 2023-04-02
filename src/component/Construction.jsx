@@ -2,18 +2,45 @@ import React, { useState, useEffect, useRef } from "react";
 import Editor from "@monaco-editor/react";
 import Status from "./Status";
 import Status_hex from "./Status_hex";
-
+import { Client } from "@stomp/stompjs";
+let client;
 const Construction = ({ onChange, language, code }) => {
-  const [value, setValue] = useState(code || "");
+  const [value, setValue] = useState(code || "hi");
   const Ref = useRef(null);
   const [timer, setTimer] = useState("00:00:00");
 
+  useEffect(() => {
+    if (!client) {
+      client = new Client({
+        brokerURL: "ws://localhost:8080/demo-websocket",
+        onConnect: () => {
+          client.subscribe("/topic/result", (message) => {
+            const body = JSON.parse(message.body);
+            // console.log(body);
+          });
+        },
+      });
+      client.activate();
+    }
+  }, []);
+
   const handleEditorChange = (value) => {
     setValue(value);
-    // onChange("code", value);
   };
+
   const checkingtype = () => {
-    console.log(value);
+    if (client) {
+      console.log(1);
+      if (client.connected) {
+        console.log(value);
+        client.publish({
+          destination: "/app/ParseMsg",
+          body: JSON.stringify({
+            code: value,
+          }),
+        });
+      }
+    }
   };
 
   const getTimeRemaining = (e) => {

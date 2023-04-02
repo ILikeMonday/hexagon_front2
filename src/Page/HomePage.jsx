@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Client } from "@stomp/stompjs";
+import Upbeat from "./upbeat.png";
 
 export default function HomePage() {
   let client;
@@ -38,9 +39,14 @@ export default function HomePage() {
     }
   };
   return (
-    <div style={{ minHeight: "100vh", textAlign: "center" }}>
+    <div style={{ textAlign: "center", height: "100vh" }}>
       <div>
-        <h1 className="Topic">Upbeat!!! Group24</h1>
+        <h1
+          className="Topic"
+          style={{ transform: "scale(0.6)", height: "50vh" }}
+        >
+          <img src={Upbeat} />
+        </h1>
         <div
           style={{
             display: "flex",
@@ -48,7 +54,7 @@ export default function HomePage() {
             height: "50vh",
           }}
         >
-          <div class="d-grid gap-5 mx-auto">
+          <div class="d-grid gap-5 mx-auto" style={{ minHeight: "0%" }}>
             <button
               class="btn btn-primary"
               type="button"

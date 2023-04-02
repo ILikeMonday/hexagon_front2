@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Status from "../component/Status";
-
+let client;
 export default function SelectPlayerPage() {
   const [showOptions, setShowOptions] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
@@ -12,7 +12,6 @@ export default function SelectPlayerPage() {
   const [row, setrow] = useState(10);
   const [col, setcol] = useState(10);
 
-  let client;
   useEffect(() => {
     if (!client) {
       client = new Client({
@@ -24,13 +23,38 @@ export default function SelectPlayerPage() {
             setrow(body[0]);
             setcol(body[1]);
           });
+          client.subscribe("/topic/IsAdded", (message) => {
+            const body = JSON.parse(message.body);
+            console.log(body);
+          });
         },
       });
       client.activate();
     }
   }, []);
 
+  const SendPlayer = () => {
+    const sending = [];
+    for (let i = 0; i < players.length; i++) {
+      sending.push(players[i].name);
+    }
+    console.log(sending);
+    if (client) {
+      if (client.connected) {
+        console.log(players);
+        client.publish({
+          destination: "/app/AddPlayers",
+          body: JSON.stringify({
+            numofplayers: sending.length,
+            playerlist: sending,
+          }),
+        });
+      }
+    }
+  };
+
   const PlayerAdder = () => {
+    console.log(typeof players);
     if (selectedOption === null) {
       alert("Please select an option");
     } else if (selectedOption === "custom") {
@@ -41,12 +65,14 @@ export default function SelectPlayerPage() {
         const playerData = [...Array(parseInt(selectedOption))].map(
           (_, index) => ({ name: players[index].name })
         );
+
         navigate("/PlayGround", { state: { players: playerData } });
       }
     } else {
       const playerData = [...Array(parseInt(selectedOption))].map(
         (_, index) => ({ name: players[index].name })
       );
+      SendPlayer();
       navigate("/PlayGround", { state: { players: playerData } });
     }
     setPlayers([]);

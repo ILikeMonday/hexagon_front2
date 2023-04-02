@@ -1,13 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SelectPlayerPage from "../Page/SelectPlayerPage";
 import { useNavigate } from "react-router-dom";
-
+import { Client } from "@stomp/stompjs";
+let client;
 // const playerData = (props) => {
 //   const name = players[index].name;
 //   return players[index].name;
 // };
 
 export default function Status() {
+  useEffect(() => {
+    if (!client) {
+      client = new Client({
+        brokerURL: "ws://localhost:8080/demo-websocket",
+        onConnect: () => {
+          client.subscribe("/app/GetStatus", (message) => {
+            const body = JSON.parse(message.body);
+            console.log(body);
+          });
+          client.subscribe("/topic/GetStatus", (message) => {
+            const body = JSON.parse(message.body);
+            console.log(body);
+          });
+        },
+      });
+      client.activate();
+    }
+  }, []);
   return (
     <div
       style={{

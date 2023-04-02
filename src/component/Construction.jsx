@@ -3,14 +3,16 @@ import Editor from "@monaco-editor/react";
 import Status from "./Status";
 import Status_hex from "./Status_hex";
 import { Client } from "@stomp/stompjs";
+
+import Turn from "./Turn";
+
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { Link, useNavigate } from "react-router-dom";
 
-import Turn from "./Turn";
 let client;
 const Construction = ({ onChange, language, code }) => {
-  const [value, setValue] = useState("hi");
+  const [value, setValue] = useState("t=2");
   const Ref = useRef(null);
   const [timer, setTimer] = useState("00:00:00");
 
@@ -100,7 +102,11 @@ const Construction = ({ onChange, language, code }) => {
 
     // This is where you need to adjust if
     // you entend to add more time
+<<<<<<< HEAD
     deadline.setSeconds(deadline.getSeconds() + 10);
+=======
+    deadline.setSeconds(deadline.getSeconds() + 120);
+>>>>>>> df5660b9888d88c82c6e7ac482e83ba4c8007041
 
     return deadline;
   };

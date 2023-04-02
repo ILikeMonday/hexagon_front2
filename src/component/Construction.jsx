@@ -3,15 +3,14 @@ import Editor from "@monaco-editor/react";
 import Status from "./Status";
 import Status_hex from "./Status_hex";
 import { Client } from "@stomp/stompjs";
-<<<<<<< HEAD
+
 import Turn from "./Turn";
 
-=======
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 
 import Turn from "./Turn";
->>>>>>> 739ddfcee97655d800d4d966faa648686a9a5416
+
 let client;
 const Construction = ({ onChange, language, code }) => {
   const [value, setValue] = useState("t=2");

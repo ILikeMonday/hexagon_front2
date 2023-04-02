@@ -102,11 +102,7 @@ const Construction = ({ onChange, language, code }) => {
 
     // This is where you need to adjust if
     // you entend to add more time
-<<<<<<< HEAD
     deadline.setSeconds(deadline.getSeconds() + 10);
-=======
-    deadline.setSeconds(deadline.getSeconds() + 120);
->>>>>>> df5660b9888d88c82c6e7ac482e83ba4c8007041
 
     return deadline;
   };
@@ -184,23 +180,59 @@ const Construction = ({ onChange, language, code }) => {
         Sent plan ➠
       </button> */}
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <button
-          class="btn btn-primary"
-          style={{
-            fontSize: "15px",
-            padding: "10px 20px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: "auto",
-            width: "25%",
-            border: "3px solid red",
-            marginLeft: "170px",
-            marginTop: "10px",
-          }}
+        <Popup
+          trigger={
+            <button
+              class="btn btn-primary"
+              style={{
+                fontSize: "15px",
+                padding: "10px 20px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                margin: "auto",
+                width: "25%",
+                border: "3px solid red",
+                marginLeft: "200px",
+                marginTop: "10px",
+              }}
+            >
+              use previos plan
+            </button>
+          }
+          position="left center"
         >
-          Use previos plan
-        </button>
+          {() => (
+            <div className="model">
+              <div
+                className="content"
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                Use previos plan?
+              </div>
+              <div>
+                <Link to="/wait_room">
+                  <button
+                    class="btn btn-primary"
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      margin: "auto",
+                    }}
+                    onClick={checkingtype}
+                  >
+                    Confirm
+                  </button>
+                </Link>
+              </div>
+            </div>
+          )}
+        </Popup>
         <Popup
           trigger={
             <button

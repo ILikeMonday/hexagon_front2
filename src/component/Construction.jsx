@@ -3,8 +3,15 @@ import Editor from "@monaco-editor/react";
 import Status from "./Status";
 import Status_hex from "./Status_hex";
 import { Client } from "@stomp/stompjs";
+<<<<<<< HEAD
 import Turn from "./Turn";
 
+=======
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
+
+import Turn from "./Turn";
+>>>>>>> 739ddfcee97655d800d4d966faa648686a9a5416
 let client;
 const Construction = ({ onChange, language, code }) => {
   const [value, setValue] = useState("t=2");
@@ -158,7 +165,7 @@ const Construction = ({ onChange, language, code }) => {
           onChange={(e) => handleEditorChange(e)}
         />
       </div>
-      <button
+      {/* <button
         onClick={checkingtype}
         class="btn btn-primary"
         style={{
@@ -173,7 +180,78 @@ const Construction = ({ onChange, language, code }) => {
         }}
       >
         Sent plan ➠
-      </button>
+      </button> */}
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <button
+          class="btn btn-primary"
+          style={{
+            fontSize: "15px",
+            padding: "10px 20px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            margin: "auto",
+            width: "25%",
+            border: "3px solid red",
+            marginLeft: "170px",
+            marginTop: "10px",
+          }}
+        >
+          Use previos plan
+        </button>
+        <Popup
+          trigger={
+            <button
+              class="btn btn-primary"
+              style={{
+                fontSize: "15px",
+                padding: "10px 20px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                margin: "auto",
+                width: "20%",
+                border: "3px solid green",
+                marginLeft: "-170px",
+                marginTop: "10px",
+              }}
+            >
+              Sent plan ➠
+            </button>
+          }
+          position="right center"
+        >
+          {() => (
+            <div className="model">
+              <div
+                className="content"
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                Use this construction?
+              </div>
+              <div>
+                <button
+                  class="btn btn-primary"
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    margin: "auto",
+                  }}
+                  onClick={checkingtype}
+                >
+                  Confirm
+                </button>
+              </div>
+            </div>
+          )}
+        </Popup>
+      </div>
+
       <div
         style={{
           display: "flex",

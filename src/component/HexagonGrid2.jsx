@@ -8,6 +8,7 @@ import mothership from "./img/mothership.png";
 import Zoomout from "./img/magnifying-glass.png";
 import Zoomin from "./img/zoom-in.png";
 import Reset from "./img/reset.png";
+
 export default function HexagonGrid2() {
   // const [hexagons, setHexagons] = useState([[]]);
   const [scaleconfig, setScaleconfig] = useState(100);

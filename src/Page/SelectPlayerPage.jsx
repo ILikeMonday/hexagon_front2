@@ -191,6 +191,7 @@ export default function SelectPlayerPage() {
                     style={{
                       fontSize: "5vh",
                       marginRight: "10px",
+                      color: "cyan",
                     }}
                   >
                     Player {index + 1} name:

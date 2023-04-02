@@ -7,6 +7,9 @@ let client;
 //   const name = players[index].name;
 //   return players[index].name;
 // };
+let name_player = 0;
+let money = 0;
+let num = 0;
 
 export default function Status() {
   useEffect(() => {
@@ -55,11 +58,11 @@ export default function Status() {
           color: "#fff",
         }}
       >
-        name:
+        name:{name_player}
         <br />
-        budget:$
+        budget:{money}
         <br />
-        region(s):num
+        region(s):{num}
       </div>
     </div>
   );

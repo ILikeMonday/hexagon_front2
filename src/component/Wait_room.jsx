@@ -1,8 +1,31 @@
+import { Client } from "@stomp/stompjs";
 import { color } from "framer-motion";
 import React from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
+let client;
+
 export default function Wait_room() {
+  useEffect(() => {
+    if (!client) {
+      client = new Client({
+        brokerURL: window.ip,
+      });
+      client.activate();
+    }
+  }, []);
+
+  const getInfo = () => {
+    if (client) {
+      if (client.connected) {
+        client.publish({
+          destination: "/app/Status",
+        });
+      }
+    }
+  };
+
   return (
     <div color="white">
       <h1
@@ -29,6 +52,7 @@ export default function Wait_room() {
             margin: "auto",
           }}
           class="btn btn-primary"
+          onClick={getInfo}
         >
           I'm ready
         </button>

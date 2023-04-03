@@ -9,55 +9,35 @@ import "reactjs-popup/dist/index.css";
 import { Link, useNavigate } from "react-router-dom";
 
 let client;
-export default function Construction() {
-  const [playername, setName] = useState("");
-  const [budget, setBudget] = useState(0);
-  const [amountRegion, setAmountRegion] = useState(0);
-  const [IsParseSucc, setIsParseSucc] = useState(false);
+export default function Construction({
+  playername,
+  budget,
+  amountRegion,
+  IsParseSucc,
+}) {
   const [stoptime, setStoptime] = useState(false);
   const [value, setValue] = useState("t=2");
   const Ref = useRef(null);
   const [timer, setTimer] = useState("00:00:00");
 
+  const handleEditorChange = (value) => {
+    setValue(value);
+  };
+
   useEffect(() => {
     if (!client) {
       client = new Client({
         brokerURL: window.ip,
-        onConnect: () => {
-          client.subscribe("/topic/result", (message) => {
-            const body = JSON.parse(message.body);
-            setIsParseSucc(body["IsOK"]);
-            console.log(body);
-            setStoptime(true);
-            setTimer("00:00:10");
-          });
-          client.subscribe("/topic/GetStatus", (message) => {
-            const body = JSON.parse(message.body);
-            console.log(body);
-            setAmountRegion(body["regionLen"]);
-            setBudget(body["budget"]);
-            setName(body["playerName"]);
-            console.log(playername);
-            console.log(budget);
-            console.log(amountRegion);
-          });
-        },
       });
       client.activate();
     }
   }, []);
 
-  const handleEditorChange = (value) => {
-    setValue(value);
-  };
-
   const checkingtype = () => {
     if (client) {
       if (client.connected) {
         console.log(value);
-        setAmountRegion(0);
-        setBudget(0);
-        setName("");
+
         client.publish({
           destination: "/app/ParseMsg",
           body: JSON.stringify({

@@ -43,7 +43,7 @@ export default function HomePage() {
       <div>
         <h1
           className="Topic"
-          style={{ transform: "scale(0.6)", height: "50vh" }}
+          style={{ transform: "scale(0.7)", height: "50vh" }}
         >
           <img src={Upbeat} />
         </h1>

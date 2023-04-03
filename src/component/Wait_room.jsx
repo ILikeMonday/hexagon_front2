@@ -28,6 +28,7 @@ export default function Wait_room() {
             alignItems: "center",
             margin: "auto",
           }}
+          class="btn btn-primary"
         >
           I'm ready
         </button>

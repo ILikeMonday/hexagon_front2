@@ -4,10 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 
-// const playerData = (props) => {
-//   const name = players[index].name;
-//   return players[index].name;
-// };
 let name_player = 0;
 let money = 0;
 let num = 0;

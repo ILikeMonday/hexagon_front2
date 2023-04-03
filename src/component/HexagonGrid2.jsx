@@ -65,23 +65,6 @@ export default function HexagonGrid2() {
   const reset = () => {
     setScaleconfig(100);
   };
-  const own = () => {
-    console.log(1);
-    hexagons[0] = <></>;
-    console.log(hexagons[0]);
-    // hexagons.splice(
-    //   0,
-    //   1,
-    //   <Hexagongen
-    //     key={`hex-${0},${0}`}
-    //     x={0}
-    //     y={0}
-    //     IsOwned={false}
-    //     img={"own"}
-    //   />
-    // );
-    console.log(2);
-  };
   return (
     <div className="left-div">
       <h1

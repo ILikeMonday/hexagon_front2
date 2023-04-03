@@ -10,6 +10,8 @@ import Players from "./component/Players";
 import Wait_room from "./component/Wait_room";
 import Victory from "./component/Victory";
 
+window.ip = "ws://localhost:8080/demo-websocket";
+
 export default function App() {
   return (
     <Routes>

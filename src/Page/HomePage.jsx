@@ -10,7 +10,7 @@ export default function HomePage() {
   useEffect(() => {
     if (!client) {
       client = new Client({
-        brokerURL: "ws://localhost:8080/demo-websocket",
+        brokerURL: window.ip,
         onConnect: () => {
           client.subscribe("/topic/GameStart", (message) => {
             const body = JSON.parse(message.body);
@@ -26,8 +26,6 @@ export default function HomePage() {
   });
 
   const checkStart = () => {
-    navigate("/Player");
-    return;
     if (client) {
       if (client.connected) {
         client.publish({

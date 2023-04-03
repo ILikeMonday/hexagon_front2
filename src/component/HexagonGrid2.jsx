@@ -21,7 +21,7 @@ export default function HexagonGrid2() {
   useEffect(() => {
     if (!client) {
       client = new Client({
-        brokerURL: "ws://localhost:8080/demo-websocket",
+        brokerURL: window.ip,
         onConnect: () => {
           client.subscribe("/app/RowCol", (message) => {
             const body = JSON.parse(message.body);

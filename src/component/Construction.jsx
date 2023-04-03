@@ -14,7 +14,7 @@ export default function Construction() {
   const [budget, setBudget] = useState(0);
   const [amountRegion, setAmountRegion] = useState(0);
   const [IsParseSucc, setIsParseSucc] = useState(false);
-
+  const [stoptime, setStoptime] = useState(false);
   const [value, setValue] = useState("t=2");
   const Ref = useRef(null);
   const [timer, setTimer] = useState("00:00:00");
@@ -22,12 +22,14 @@ export default function Construction() {
   useEffect(() => {
     if (!client) {
       client = new Client({
-        brokerURL: "ws://localhost:8080/demo-websocket",
+        brokerURL: window.ip,
         onConnect: () => {
           client.subscribe("/topic/result", (message) => {
             const body = JSON.parse(message.body);
             setIsParseSucc(body["IsOK"]);
-            console.log(IsParseSucc);
+            console.log(body);
+            setStoptime(true);
+            setTimer("00:00:10");
           });
           client.subscribe("/topic/GetStatus", (message) => {
             const body = JSON.parse(message.body);
@@ -43,7 +45,7 @@ export default function Construction() {
       });
       client.activate();
     }
-  }, [playername, budget, amountRegion, IsParseSucc]);
+  }, []);
 
   const handleEditorChange = (value) => {
     setValue(value);
@@ -51,9 +53,11 @@ export default function Construction() {
 
   const checkingtype = () => {
     if (client) {
-      console.log(1);
       if (client.connected) {
         console.log(value);
+        setAmountRegion(0);
+        setBudget(0);
+        setName("");
         client.publish({
           destination: "/app/ParseMsg",
           body: JSON.stringify({
@@ -83,6 +87,13 @@ export default function Construction() {
       // update the timer
       // check if less than 10 then we need to
       // add '0' at the beginning of the variable
+      if (client) {
+        if (client.connected) {
+          client.publish({
+            destination: "/app/Status",
+          });
+        }
+      }
       setTimer(
         (hours > 9 ? hours : "0" + hours) +
           ":" +
@@ -106,6 +117,7 @@ export default function Construction() {
     // after 1000ms or 1sec
     if (Ref.current) clearInterval(Ref.current);
     const id = setInterval(() => {
+      if (stoptime === true) return;
       startTimer(e);
     }, 1000);
     Ref.current = id;
@@ -314,9 +326,9 @@ export default function Construction() {
       >
         <Status
           style={{ marginRight: "80px" }}
-          name={"nu"}
-          budget={0}
-          len={0}
+          name={playername}
+          budget={budget}
+          len={amountRegion}
         />
 
         <Status_hex />

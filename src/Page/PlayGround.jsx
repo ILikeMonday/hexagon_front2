@@ -1,13 +1,12 @@
 import React from "react";
-
-import Playableoverlay from "../Layouts/Playablelayout";
+import Construction from "../component/Construction";
+import HexagonGrid2 from "../component/HexagonGrid2";
 
 export default function PlayGround() {
   return (
-    <div>
-      {/* <HexagonGrid /> */}
-
-      <Playableoverlay></Playableoverlay>
+    <div className="playground">
+      <HexagonGrid2 />
+      <Construction />
     </div>
   );
 }

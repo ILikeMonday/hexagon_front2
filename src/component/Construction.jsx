@@ -9,10 +9,11 @@ import "reactjs-popup/dist/index.css";
 import { Link, useNavigate } from "react-router-dom";
 
 let client;
-const Construction = ({ onChange, language, code }) => {
+export default function Construction() {
   const [playername, setName] = useState("");
   const [budget, setBudget] = useState(0);
   const [amountRegion, setAmountRegion] = useState(0);
+  const [IsParseSucc, setIsParseSucc] = useState(false);
 
   const [value, setValue] = useState("t=2");
   const Ref = useRef(null);
@@ -25,7 +26,8 @@ const Construction = ({ onChange, language, code }) => {
         onConnect: () => {
           client.subscribe("/topic/result", (message) => {
             const body = JSON.parse(message.body);
-            console.log(body);
+            setIsParseSucc(body["IsOK"]);
+            console.log(IsParseSucc);
           });
           client.subscribe("/topic/GetStatus", (message) => {
             const body = JSON.parse(message.body);
@@ -41,7 +43,7 @@ const Construction = ({ onChange, language, code }) => {
       });
       client.activate();
     }
-  }, []);
+  }, [playername, budget, amountRegion, IsParseSucc]);
 
   const handleEditorChange = (value) => {
     setValue(value);
@@ -321,6 +323,4 @@ const Construction = ({ onChange, language, code }) => {
       </div>
     </div>
   );
-};
-
-export default Construction;
+}

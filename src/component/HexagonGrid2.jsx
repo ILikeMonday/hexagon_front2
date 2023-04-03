@@ -49,7 +49,7 @@ export default function HexagonGrid2() {
         y: y + 1,
         columadjust: j,
         IsOwned: false,
-        img: 1 ? "own" : "notown",
+        img: true ? "own" : "notown",
       });
       if (k % 2 === 0) j--;
     }
@@ -122,7 +122,6 @@ export default function HexagonGrid2() {
                 IsOwned={false}
               />
             ))}
-            <img src></img>
           </Layout>
           {/* <Pattern id="pat-1" link={`${mothership}`} /> */}
         </HexGrid>

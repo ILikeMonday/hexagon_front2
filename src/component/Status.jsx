@@ -54,4 +54,4 @@ const Status = (props) => {
   );
 };
 
-export default React.memo(Status);
+export default Status;

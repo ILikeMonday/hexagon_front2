@@ -18,12 +18,15 @@ const HexagonGen = (props) => {
     cursor: "pointer",
     backgroundImage: `url(${space})`,
     fillOpacity: isHover ? "1" : "0.75",
-    fill: isHover ? "#8583e4" : "#5c59ff",
     transition: "0.2s",
   };
   // #0400ff
   const ShowMap = () => {
     console.log(row + "," + col);
+  };
+
+  const checkown = {
+    fill: IsOwned ? "#f32626" : "#5c59ff",
   };
 
   return (
@@ -34,7 +37,7 @@ const HexagonGen = (props) => {
       onClick={ShowMap}
     >
       {/* fill="pat-1" */}
-      <Hexagon q={x - 1} r={columadjust} s={0}>
+      <Hexagon style={checkown} q={x - 1} r={columadjust} s={0}>
         <Text className="hextext">
           {row},{col}
         </Text>
@@ -43,4 +46,4 @@ const HexagonGen = (props) => {
   );
 };
 
-export default React.memo(HexagonGen);
+export default HexagonGen;

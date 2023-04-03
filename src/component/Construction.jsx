@@ -3,15 +3,18 @@ import Editor from "@monaco-editor/react";
 import Status from "./Status";
 import Status_hex from "./Status_hex";
 import { Client } from "@stomp/stompjs";
-
 import Turn from "./Turn";
-
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { Link, useNavigate } from "react-router-dom";
 
 let client;
-const Construction = ({ onChange, language, code }) => {
+export default function Construction() {
+  const [playername, setName] = useState("");
+  const [budget, setBudget] = useState(0);
+  const [amountRegion, setAmountRegion] = useState(0);
+  const [IsParseSucc, setIsParseSucc] = useState(false);
+
   const [value, setValue] = useState("t=2");
   const Ref = useRef(null);
   const [timer, setTimer] = useState("00:00:00");
@@ -23,13 +26,24 @@ const Construction = ({ onChange, language, code }) => {
         onConnect: () => {
           client.subscribe("/topic/result", (message) => {
             const body = JSON.parse(message.body);
+            setIsParseSucc(body["IsOK"]);
+            console.log(IsParseSucc);
+          });
+          client.subscribe("/topic/GetStatus", (message) => {
+            const body = JSON.parse(message.body);
             console.log(body);
+            setAmountRegion(body["regionLen"]);
+            setBudget(body["budget"]);
+            setName(body["playerName"]);
+            console.log(playername);
+            console.log(budget);
+            console.log(amountRegion);
           });
         },
       });
       client.activate();
     }
-  }, []);
+  }, [playername, budget, amountRegion, IsParseSucc]);
 
   const handleEditorChange = (value) => {
     setValue(value);
@@ -298,12 +312,15 @@ const Construction = ({ onChange, language, code }) => {
           height: "30vh",
         }}
       >
-        <Status style={{ marginRight: "80px" }} />
+        <Status
+          style={{ marginRight: "80px" }}
+          name={"nu"}
+          budget={0}
+          len={0}
+        />
 
         <Status_hex />
       </div>
     </div>
   );
-};
-
-export default Construction;
+}

@@ -15,6 +15,7 @@ export default function HexagonGrid2() {
   const hexagonSize = { x: 8, y: 8 };
   const [row, setrow] = useState(10);
   const [col, setcol] = useState(10);
+  const [owned, setOwned] = useState([]);
   let client;
 
   useEffect(() => {
@@ -26,6 +27,11 @@ export default function HexagonGrid2() {
             const body = JSON.parse(message.body);
             setrow(body[0]);
             setcol(body[1]);
+          });
+          client.subscribe("/app/Hexmap", (message) => {
+            const body = JSON.parse(message.body);
+            setOwned(body);
+            console.log(owned);
           });
         },
       });
@@ -43,7 +49,7 @@ export default function HexagonGrid2() {
         y: y + 1,
         columadjust: j,
         IsOwned: false,
-        img: "notown",
+        img: true ? "own" : "notown",
       });
       if (k % 2 === 0) j--;
     }
@@ -116,7 +122,6 @@ export default function HexagonGrid2() {
                 IsOwned={false}
               />
             ))}
-            <img src></img>
           </Layout>
           {/* <Pattern id="pat-1" link={`${mothership}`} /> */}
         </HexGrid>
